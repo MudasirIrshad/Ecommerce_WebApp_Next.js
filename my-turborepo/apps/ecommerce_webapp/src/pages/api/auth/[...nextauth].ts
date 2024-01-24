@@ -19,22 +19,22 @@ const handler = NextAuth({
         try {
           const gmail = credentials.gmail;
           const password = credentials.password;
-          const admin = await Admin.findOne({ gmail, password });
           const user = await User.findOne({ gmail, password });
-          if (!admin && !user) {
-            return null;
-          }
+
           if (user) {
             return {
               id: user._id,
               email: user.gmail,
-              name: "User",
+              name: user.username,
+              role: "user",
             };
           }
+          const admin = await Admin.findOne({ gmail, password });
           return {
             id: admin._id,
             email: admin.gmail,
-            name: "Admin",
+            name: admin.adminname,
+            role: "admin",
           };
         } catch (error) {
           console.log(error);
@@ -45,17 +45,20 @@ const handler = NextAuth({
   ],
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
-    jwt: ({ token, user }) => {
-      if (user?.name === "Admin") {
-        token.isAdmin = true;
+    async jwt({ token, user }) {
+      if (!token) {
       }
-      if (user?.name === "User") {
-        token.isAdmin = false;
+      if (user) {
+        token.role = user.role;
+        console.log(user);
       }
       return token;
     },
-    session: ({ session, token, user }) => {
-      console.log(token);
+    async session({ session, token }) {
+      if (token) {
+        session.user.role = token.role;
+      }
+      console.log(session);
       return session;
     },
   },

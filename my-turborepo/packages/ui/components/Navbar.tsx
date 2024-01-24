@@ -5,21 +5,23 @@ import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
 
 export default function Navbar() {
-  const router = useRouter();
   const [usertoken, setUserToken] = useState(false);
   const [admintoken, setAdminToken] = useState(false);
   const { data, status } = useSession();
+  console.log(data);
+
   useEffect(() => {
-    if (data?.user?.name === "Admin" && status === "authenticated") {
+    if (data?.user?.role === "admin" && status === "authenticated") {
       setAdminToken(true);
       console.log(data);
-    } else if (data?.user?.name === "User" && status === "authenticated") {
+    } else if (data?.user?.role === "user" && status === "authenticated") {
       setUserToken(true);
     }
-  });
+  }, [data, status]);
   const handleClick = () => {
     signOut();
     setAdminToken(false);
+    setUserToken(false);
   };
   return (
     <div
