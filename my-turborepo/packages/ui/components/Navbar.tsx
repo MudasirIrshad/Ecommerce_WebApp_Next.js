@@ -89,7 +89,6 @@ export default function Navbar() {
               }}
               onClick={handleClick}
             >
-              
               Logout
             </Button>
           </>
