@@ -8,6 +8,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "@types/jwt-decode": "^2.2.1",
     "prettier": "^3.2.5",
     "turbo": "^2.3.3",
     "typescript": "5.5.4"
@@ -27,6 +28,7 @@
     "axios": "^1.7.9",
     "cookies-next": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
     "mo": "^1.7.3",
     "mongoose": "^8.9.5",
     "next-auth": "^4.24.11"

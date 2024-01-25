@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import dbConnection from "@/lib/dbConnection";
 import { setCookie } from "cookies-next";
 
-const SECRETKEY = "secret key";
+const secretKey = process.env.NEXTAUTH_SECRET || "";
 type Response_Data = {
   token?: String;
   message?: String;
@@ -21,7 +21,7 @@ export default async function handler(
   else {
     const newAdmin = new Admin({ username, gmail, password });
     newAdmin.save();
-    const token = jwt.sign({ gmail, role: "Admin" }, SECRETKEY, {
+    const token = jwt.sign({ gmail, role: "admin" }, secretKey, {
       expiresIn: "1h",
     });
     setCookie("authToken", token, {

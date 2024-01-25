@@ -1,7 +1,6 @@
 import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
 
 export default function Navbar() {
