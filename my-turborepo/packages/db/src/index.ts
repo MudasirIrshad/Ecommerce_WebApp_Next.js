@@ -25,7 +25,8 @@ const productSchema = new mongoose.Schema({
 });
 
 // Check if models already exist in mongoose.models, to avoid redefinition
-const User = mongoose.models.User || mongoose.model("User", userSchema);
-const Admin = mongoose.models.Admin || mongoose.model("Admin", adminSchema);
-const Product =
+export const User = mongoose.models.User || mongoose.model("User", userSchema);
+export const Admin =
+  mongoose.models.Admin || mongoose.model("Admin", adminSchema);
+export const Product =
   mongoose.models.Product || mongoose.model("Product", productSchema);
