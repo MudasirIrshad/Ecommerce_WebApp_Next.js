@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Box, Button, TextField } from "@mui/material";
 
-export function Signup() {
-  const handleClick = ()=>{
-    alert('clicked')
-  }
-  const [username, setUsername] = useState("");
+export function Signup(props) {
+  const handleClick = () => {
+    props.onClick( name, gmail, password );
+  };
+  const [name, setName] = useState("");
   const [gmail, setGmail] = useState("");
   const [password, setPassword] = useState("");
   return (
@@ -29,7 +29,7 @@ export function Signup() {
           id="outlined-required"
           label="Name"
           onChange={(e) => {
-            setUsername(e.target.value);
+            setName(e.target.value);
           }}
         />
         <TextField

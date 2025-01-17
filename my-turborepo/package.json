@@ -19,5 +19,9 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "mo": "^1.7.3",
+    "mongoose": "^8.9.5"
+  }
 }

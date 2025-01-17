@@ -12,7 +12,8 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "next": "15.1.4",
-    "ui":"*"
+    "ui":"*",
+    "db":"*"
   },
   "devDependencies": {
     "typescript": "^5",
