@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { Admin } from "db";
 import jwt from "jsonwebtoken";
+import dbConnection from "@/lib/dbConnection";
 const SECRETKEY = "secret key";
 type Response_Data = {
   token?: String;
@@ -10,9 +11,12 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Response_Data>
 ) {
+  await dbConnection();
   const { username, gmail, password } = req.body;
+  console.log(username);
+
   const admin = await Admin.findOne({ gmail });
-  if (admin) res.status(404).send({ message: "Try another Gmail" });
+  if (admin) res.send("Try another Gmail");
   else {
     const newAdmin = new Admin({ username, gmail, password });
     newAdmin.save();

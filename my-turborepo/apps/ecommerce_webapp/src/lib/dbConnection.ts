@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 let alreadyDone = false;
-export default async function connectDatabase() {
+export default async function dbConnection() {
   let DB_URL =
     "mongodb+srv://mudasirirshad47:mudasir123456789@cluster0.jzcnrjw.mongodb.net/Course_Selling_App";
   if (alreadyDone) {
@@ -9,5 +9,5 @@ export default async function connectDatabase() {
   }
   await mongoose.connect(DB_URL);
   alreadyDone = true;
-  console.log("connected");
+  console.log("database connected");
 }
