@@ -16,7 +16,7 @@ export default async function handler(
   console.log(username);
 
   const admin = await Admin.findOne({ gmail });
-  if (admin) res.send("Try another Gmail");
+  if (admin) res.send({ message: "Try another Gmail" });
   else {
     const newAdmin = new Admin({ username, gmail, password });
     newAdmin.save();
