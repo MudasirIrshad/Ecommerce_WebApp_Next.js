@@ -28,6 +28,7 @@
     "cookies-next": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "mo": "^1.7.3",
-    "mongoose": "^8.9.5"
+    "mongoose": "^8.9.5",
+    "next-auth": "^4.24.11"
   }
 }
