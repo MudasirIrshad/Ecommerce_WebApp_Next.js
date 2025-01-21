@@ -1,13 +1,13 @@
 import React from "react";
-import { Signin } from "@repo/ui/ui";
+import { Signup } from "@repo/ui/ui";
 import axios from "axios";
-export default function signin() {
+export default function signupAdmin() {
   return (
     <div>
-      <Signin
+      <Signup
         onClick={async (username, gmail, password) => {
           const res = await axios
-            .post("/api/signin", {
+            .post("/api/signupAdmin", {
               username,
               gmail,
               password,
@@ -18,7 +18,6 @@ export default function signin() {
             .catch((err) => {
               console.log(err);
             });
-            
         }}
       />
     </div>

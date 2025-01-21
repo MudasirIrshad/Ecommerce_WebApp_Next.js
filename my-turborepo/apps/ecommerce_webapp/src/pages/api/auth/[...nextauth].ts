@@ -1,4 +1,4 @@
-import { Admin } from "db";
+import { Admin, User } from "db";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -19,13 +19,21 @@ const handler = NextAuth({
           const gmail = credentials.gmail;
           const password = credentials.password;
           const admin = await Admin.findOne({ gmail, password });
-          if (!admin) {
+          const user = await User.findOne({ gmail, password });
+          if (!admin && !user) {
             return null;
+          }
+          if (user) {
+            return {
+              id: user._id,
+              email: user.gmail,
+              name: "User",
+            };
           }
           return {
             id: admin._id,
-            gmail: admin.gmail,
-            role: "Admin",
+            email: admin.gmail,
+            name: "Admin",
           };
         } catch (error) {
           console.log(error);

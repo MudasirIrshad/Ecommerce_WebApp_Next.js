@@ -1,8 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { Admin } from "db";
+import { User } from "db";
 import jwt from "jsonwebtoken";
-import { setCookie } from "cookies-next";
 import dbConnection from "@/lib/dbConnection";
+import { setCookie } from "cookies-next";
+
 const SECRETKEY = "secret key";
 type Response_Data = {
   token?: String;
@@ -14,11 +15,13 @@ export default async function handler(
 ) {
   await dbConnection();
   const { username, gmail, password } = req.body;
-  console.log(username);
 
-  const admin = await Admin.findOne({ gmail, password });
-  if (admin) {
-    const token = jwt.sign({ gmail, role: "Admin" }, SECRETKEY, {
+  const user = await User.findOne({ gmail });
+  if (user) res.send({ message: "Try another Gmail" });
+  else {
+    const newUser = new User({ username, gmail, password });
+    newUser.save();
+    const token = jwt.sign({ gmail, role: "User" }, SECRETKEY, {
       expiresIn: "1h",
     });
     setCookie("authToken", token, {
@@ -29,8 +32,6 @@ export default async function handler(
       maxAge: 60 * 60,
       path: "/",
     });
-    res.send({ message: "SignedIn successfully done" });
-  } else {
-    res.send({ message: "Signup first" });
+    res.send({ message: "User Created successfully", token });
   }
 }

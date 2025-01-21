@@ -1,13 +1,13 @@
 import React from "react";
 import { Signup } from "@repo/ui/ui";
 import axios from "axios";
-export default function signup() {
+export default function signupUser() {
   return (
     <div>
       <Signup
         onClick={async (username, gmail, password) => {
           const res = await axios
-            .post("/api/signup", {
+            .post("/api/signupUser", {
               username,
               gmail,
               password,
