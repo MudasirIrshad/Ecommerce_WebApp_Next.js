@@ -76,6 +76,7 @@ export function Signup(props: any) {
                 label="User"
                 onClick={() => {
                   setRole("User");
+                  setCheckbox(false);
                 }}
               />
               <FormControlLabel
