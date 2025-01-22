@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
   gmail: String,
   password: String,
   purchasedProducts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
+  cart: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
 });
 
 // Define admin schema
