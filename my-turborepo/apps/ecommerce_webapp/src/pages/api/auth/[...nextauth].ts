@@ -1,6 +1,7 @@
 import { Admin, User } from "db";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+console.log("this is env file data", process.env.NEXTAUTH_SECRET);
 
 const handler = NextAuth({
   providers: [
@@ -43,5 +44,20 @@ const handler = NextAuth({
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
+  callbacks: {
+    jwt: ({ token, user }) => {
+      if (user?.name === "Admin") {
+        token.isAdmin = true;
+      }
+      if (user?.name === "User") {
+        token.isAdmin = false;
+      }
+      return token;
+    },
+    session: ({ session, token, user }) => {
+      console.log(token);
+      return session;
+    },
+  },
 });
 export default handler;
