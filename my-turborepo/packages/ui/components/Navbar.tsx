@@ -70,7 +70,7 @@ export default function Navbar() {
                 marginRight: "5px",
               }}
             >
-              Courses
+              Products
             </Button>
           </>
         ) : (
