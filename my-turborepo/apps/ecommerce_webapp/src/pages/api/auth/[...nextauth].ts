@@ -3,7 +3,7 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 console.log("this is env file data", process.env.NEXTAUTH_SECRET);
 
-const handler = NextAuth({
+const authOptions = NextAuth({
   providers: [
     CredentialsProvider({
       name: "Email",
@@ -50,7 +50,7 @@ const handler = NextAuth({
       }
       if (user) {
         token.role = user.role;
-        console.log(user);
+        console.log("this is the token", token);
       }
       return token;
     },
@@ -58,9 +58,9 @@ const handler = NextAuth({
       if (token) {
         session.user.role = token.role;
       }
-      console.log(session);
+      console.log("this is session: ", session);
       return session;
     },
   },
 });
-export default handler;
+export default authOptions;
