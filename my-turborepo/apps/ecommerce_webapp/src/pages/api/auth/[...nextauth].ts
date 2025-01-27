@@ -50,7 +50,6 @@ const authOptions = NextAuth({
       }
       if (user) {
         token.role = user.role;
-        console.log("this is the token", token);
       }
       return token;
     },
@@ -58,7 +57,6 @@ const authOptions = NextAuth({
       if (token) {
         session.user.role = token.role;
       }
-      console.log("this is session: ", session);
       return session;
     },
   },
