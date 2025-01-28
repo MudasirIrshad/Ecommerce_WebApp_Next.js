@@ -2,7 +2,6 @@ import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
-
 export default function Navbar() {
   const [usertoken, setUserToken] = useState(false);
   const [admintoken, setAdminToken] = useState(false);
@@ -79,7 +78,7 @@ export default function Navbar() {
       </div>
       <div>
         {usertoken || admintoken ? (
-          <>
+          <div>
             <Button
               variant="contained"
               style={{
@@ -89,10 +88,9 @@ export default function Navbar() {
               }}
               onClick={handleClick}
             >
-              
               Logout
             </Button>
-          </>
+          </div>
         ) : (
           <>
             <Button
