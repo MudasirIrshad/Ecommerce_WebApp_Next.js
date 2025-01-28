@@ -21,6 +21,8 @@ export default async function handler(
   await dbConnection();
   const isAdmin = await Admin.findOne({ gmail });
   if (isAdmin) {
+    console.log("Clicked the backend server");
+
     const data: product = req.body;
     const newProduct = new Product(data);
     newProduct.save();

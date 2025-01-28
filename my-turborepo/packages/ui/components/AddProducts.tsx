@@ -7,11 +7,12 @@ import {
   Radio,
   RadioGroup,
   TextField,
+  Typography,
 } from "@mui/material";
 import { useState } from "react";
 export default function AddProducts(props: any) {
   const handleClick = () => {
-    props.onClick(name, price, description, quantity, category);
+    props.onClick(title, price, description, imageLink, published);
   };
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
@@ -21,7 +22,7 @@ export default function AddProducts(props: any) {
 
   return (
     <>
-      <div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <Box
           component="section"
           sx={{
@@ -59,7 +60,15 @@ export default function AddProducts(props: any) {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
-          <p>Published</p>
+          <TextField
+            required
+            style={{ padding: "10px", width: "350px" }}
+            id="outlined-required"
+            label="Product Image URL"
+            value={imageLink}
+            onChange={(e) => setImageLink(e.target.value)}
+          />
+          <Typography>Published</Typography>
           <FormControl>
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
@@ -67,10 +76,9 @@ export default function AddProducts(props: any) {
               name="radio-buttons-group"
             >
               <div style={{ display: "flex" }}>
-                
                 <FormControlLabel
                   value="True"
-                  control={<Radio />}
+                  control={<Radio checked={published === true} />}
                   label="True"
                   onClick={() => {
                     setPublished(true);
@@ -87,6 +95,13 @@ export default function AddProducts(props: any) {
               </div>
             </RadioGroup>
           </FormControl>
+          <Button
+            sx={{ backgroundColor: "black", width: "350px", margin: "10px" }}
+            variant="contained"
+            onClick={handleClick}
+          >
+            Add Product
+          </Button>
         </Box>
       </div>
     </>

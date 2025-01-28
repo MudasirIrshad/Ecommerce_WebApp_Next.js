@@ -53,7 +53,12 @@ export default function Navbar() {
                 marginRight: "5px",
               }}
             >
-              {/* <Link href={"/addcourse"}>Courses</Link> */}
+              <Link
+                style={{ color: "black", textDecoration: "none" }}
+                href={"/addProducts"}
+              >
+                Add Prdouct
+              </Link>
             </Button>
           </>
         ) : (
@@ -101,14 +106,24 @@ export default function Navbar() {
                 marginRight: "5px",
               }}
             >
-              <Link href={"/api/auth/signin"}>Login</Link>
+              <Link
+                style={{ color: "black", textDecoration: "none" }}
+                href={"/api/auth/signin"}
+              >
+                Login
+              </Link>
             </Button>
 
             <Button
               variant="contained"
               style={{ backgroundColor: "white", color: "black" }}
             >
-              <Link href={"/signup"}>Signup</Link>
+              <Link
+                style={{ color: "black", textDecoration: "none" }}
+                href={"/signup"}
+              >
+                Signup
+              </Link>
             </Button>
           </>
         )}

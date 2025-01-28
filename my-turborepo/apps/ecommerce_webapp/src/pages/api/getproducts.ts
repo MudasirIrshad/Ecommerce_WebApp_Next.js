@@ -9,7 +9,7 @@ export default async function handler(
   await dbConnection();
   const products = await Product.find();
   if (products) {
-    res.json({products});
+    res.send(products);
   } else {
     res.status(404).json({ message: "No products found" });
   }
