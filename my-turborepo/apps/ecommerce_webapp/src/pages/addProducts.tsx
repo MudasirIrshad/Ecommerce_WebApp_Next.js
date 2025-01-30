@@ -19,7 +19,6 @@ export default function addProducts() {
             router.push("/");
           } catch (error) {
             alert(error);
-            console.log(error);
           }
         }}
       />
