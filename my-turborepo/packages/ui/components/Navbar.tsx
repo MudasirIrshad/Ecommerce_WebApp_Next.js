@@ -32,34 +32,36 @@ export default function Navbar() {
       }}
     >
       <div>
-        <Button
-          variant="contained"
-          style={{
-            backgroundColor: "white",
-            color: "black",
-            marginRight: "5px",
-          }}
-        >
-          Home
-        </Button>
+        <Link style={{ color: "black", textDecoration: "none" }} href={"/"}>
+          <Button
+            variant="contained"
+            style={{
+              backgroundColor: "white",
+              color: "black",
+              marginRight: "5px",
+            }}
+          >
+            Home
+          </Button>
+        </Link>
 
         {admintoken ? (
           <>
-            <Button
-              variant="contained"
-              style={{
-                backgroundColor: "white",
-                color: "black",
-                marginRight: "5px",
-              }}
+            <Link
+              style={{ color: "black", textDecoration: "none" }}
+              href={"/addProducts"}
             >
-              <Link
-                style={{ color: "black", textDecoration: "none" }}
-                href={"/addProducts"}
+              <Button
+                variant="contained"
+                style={{
+                  backgroundColor: "white",
+                  color: "black",
+                  marginRight: "5px",
+                }}
               >
                 Add Prdouct
-              </Link>
-            </Button>
+              </Button>
+            </Link>
           </>
         ) : (
           <></>
