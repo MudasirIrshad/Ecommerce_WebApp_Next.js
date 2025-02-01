@@ -49,7 +49,7 @@ export default function Navbar() {
           <>
             <Link
               style={{ color: "black", textDecoration: "none" }}
-              href={"/addProducts"}
+              href={"/portal"}
             >
               <Button
                 variant="contained"
@@ -59,7 +59,7 @@ export default function Navbar() {
                   marginRight: "5px",
                 }}
               >
-                Add Prdouct
+                Portal
               </Button>
             </Link>
           </>
