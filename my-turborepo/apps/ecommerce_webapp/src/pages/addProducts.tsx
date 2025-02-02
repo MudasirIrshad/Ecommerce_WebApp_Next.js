@@ -16,7 +16,7 @@ export default function addProducts() {
               published,
             });
             alert("Product added successfully!");
-            router.push("/");
+            router.push("/portal");
           } catch (error) {
             alert(error);
           }
