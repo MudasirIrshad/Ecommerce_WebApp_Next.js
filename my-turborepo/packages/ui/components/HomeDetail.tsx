@@ -6,23 +6,43 @@ import {
   CardMedia,
   CardContent,
   Button,
+  CircularProgress,
 } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function HomeDetail() {
   const [proudcts, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
       .get("/api/getproducts")
       .then((response) => {
         setProducts(response.data);
         console.log(response.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+  if (loading) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: 4,
+          backgroundColor: "#f5f5f5",
+          minHeight: "100vh",
+        }}
+      >
+        <CircularProgress />
+      </div>
+    );
+  }
+
   return (
     <Box sx={{ padding: 4, backgroundColor: "#f5f5f5", minHeight: "100vh" }}>
       <Typography variant="h3" textAlign="center" gutterBottom>
