@@ -19,6 +19,7 @@ export default function Navbar() {
   const handleClick = () => {
     signOut();
     setAdminToken(false);
+    localStorage.removeItem("authToken");
     setUserToken(false);
   };
   return (
@@ -26,7 +27,6 @@ export default function Navbar() {
       style={{
         backgroundColor: "black",
         padding: "10px",
-
         display: "flex",
         justifyContent: "space-between",
       }}
