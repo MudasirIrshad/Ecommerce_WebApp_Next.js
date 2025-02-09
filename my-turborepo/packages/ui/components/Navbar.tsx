@@ -86,6 +86,27 @@ export default function Navbar() {
       <div>
         {usertoken || admintoken ? (
           <div>
+            {usertoken ? (
+              <>
+                <Link
+                  style={{ color: "black", textDecoration: "none" }}
+                  href={"/viewCart"}
+                >
+                  <Button
+                    variant="contained"
+                    style={{
+                      backgroundColor: "white",
+                      color: "black",
+                      marginRight: "5px",
+                    }}
+                  >
+                    Cart
+                  </Button>
+                </Link>
+              </>
+            ) : (
+              <></>
+            )}
             <Button
               variant="contained"
               style={{
