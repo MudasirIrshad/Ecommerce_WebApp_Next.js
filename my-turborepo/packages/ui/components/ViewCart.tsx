@@ -56,21 +56,21 @@ export default function ViewCart() {
                 <Button
                   variant="contained"
                   fullWidth
-                  //   onClick={async () => {
-                  //     try {
-                  //       await axios.delete("api/admin/deleteproduct", {
-                  //         params: {
-                  //           productId: product._id,
-                  //         },
-                  //       });
-                  //       alert("Deleted product successfully");
-                  //       setProducts((prev) =>
-                  //         prev.filter((p) => p._id !== product._id)
-                  //       );
-                  //     } catch (error) {
-                  //       console.log("error");
-                  //     }
-                  //   }}
+                  onClick={async () => {
+                    console.log(product._id);
+                    await axios
+                      .delete("api/user/deletecart", {
+                        params: { productId: product._id },
+                      })
+                      .then(() => {
+                        setProducts((prev) =>
+                          prev.filter((p) => p._id !== product._id)
+                        );
+                      })
+                      .catch((err) => {
+                        console.log("Error:", err);
+                      });
+                  }}
                   sx={{
                     marginTop: 2,
                     borderRadius: "30px",
@@ -85,12 +85,12 @@ export default function ViewCart() {
                   fullWidth
                   //   onClick={async () => {
                   //     try {
-                  //       await axios.delete("api/admin/deleteproduct", {
+                  //       await axios.post("api/user/addtopurchase", {
                   //         params: {
                   //           productId: product._id,
                   //         },
                   //       });
-                  //       alert("Deleted product successfully");
+                  //       alert("purchased product successfully");
                   //       setProducts((prev) =>
                   //         prev.filter((p) => p._id !== product._id)
                   //       );
