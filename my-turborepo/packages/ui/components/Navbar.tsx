@@ -68,16 +68,21 @@ export default function Navbar() {
         )}
         {usertoken ? (
           <>
-            <Button
-              variant="contained"
-              style={{
-                backgroundColor: "white",
-                color: "black",
-                marginRight: "5px",
-              }}
+            <Link
+              style={{ color: "black", textDecoration: "none" }}
+              href={"/userPurchasedProducts"}
             >
-              Products
-            </Button>
+              <Button
+                variant="contained"
+                style={{
+                  backgroundColor: "white",
+                  color: "black",
+                  marginRight: "5px",
+                }}
+              >
+                Products
+              </Button>
+            </Link>
           </>
         ) : (
           <></>

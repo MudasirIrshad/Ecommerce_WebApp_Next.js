@@ -83,21 +83,19 @@ export default function ViewCart() {
                 <Button
                   variant="contained"
                   fullWidth
-                  //   onClick={async () => {
-                  //     try {
-                  //       await axios.post("api/user/addtopurchase", {
-                  //         params: {
-                  //           productId: product._id,
-                  //         },
-                  //       });
-                  //       alert("purchased product successfully");
-                  //       setProducts((prev) =>
-                  //         prev.filter((p) => p._id !== product._id)
-                  //       );
-                  //     } catch (error) {
-                  //       console.log("error");
-                  //     }
-                  //   }}
+                  onClick={async () => {
+                    try {
+                      await axios.post("api/user/addtopurchase", {
+                        productId: product._id,
+                      });
+                      alert("purchased product successfully");
+                      setProducts((prev) =>
+                        prev.filter((p) => p._id !== product._id)
+                      );
+                    } catch (error) {
+                      console.log("error");
+                    }
+                  }}
                   sx={{
                     marginTop: 2,
                     borderRadius: "30px",

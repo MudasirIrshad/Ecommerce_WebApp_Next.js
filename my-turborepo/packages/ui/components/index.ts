@@ -8,3 +8,4 @@ export * from "./PublishedProducts";
 export * from "./UnPublishedProducts";
 export * from "./Chart";
 export * from "./ViewCart";
+export * from "./UserPurchasedProducts";
